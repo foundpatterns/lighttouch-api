@@ -1,4 +1,4 @@
-event: "reqProcess", "reqProcess2"
+event: ["reqProcess", "reqProcess2"]
 priority: 1
 
 local debug = require "utils.debug"

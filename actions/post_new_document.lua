@@ -1,4 +1,4 @@
-event: "reqProcess_post_document"
+event: ["reqProcess_post_document"]
 priority: 1
 
 local inspect = require "utils.inspect"
