@@ -1,7 +1,7 @@
 event: ["reqProcess_post_document"]
 priority: 1
 
-local helpers = require("utils.helpers")
+local helpers = require("helpers")
 
 -- POST /
 local post_uuid = uuid.v4()

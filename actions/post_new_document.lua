@@ -1,7 +1,7 @@
 event: ["reqProcess_post_document"]
 priority: 1
 
-local inspect = require "utils.inspect"
+local inspect = require "inspect"
 
 local new_todo = ClientRequest.build()
     :method("GET")

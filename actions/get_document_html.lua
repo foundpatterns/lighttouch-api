@@ -1,8 +1,8 @@
 event: ["reqProcess_document_html"]
 priority: 1
 
-local helpers = require "utils.helpers"
-local fs = require "utils.fs"
+local helpers = require "helpers"
+local fs = require "fs"
 
 -- GET /[type]/[uuid]
 local type, id = req.path:match("/(%a*)/(.*)")

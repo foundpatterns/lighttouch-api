@@ -1,7 +1,7 @@
 event: ["reqProcess"]
 priority: 1
 
-local inspect = require "utils.inspect"
+local inspect = require "inspect"
 
 print("test-client action")
 local new_todo = ClientRequest.build()
