@@ -1,9 +1,11 @@
 local utils = require "utils"
 
-if req.method == "GET" and req.path:match("^/%a+/" .. utils.uuid_pattern .. "/?$") then
-    if string.match( req.headers["accept"], "json" ) then
-        events["reqProcess_document_json"]:trigger(req) -- This is for json only
-    elseif string.match( req.headers["accept"], "html" ) then
-        events["reqProcess_document_html"]:trigger(req) -- This is for html only
-    end
+if 
+	req.method == "GET"
+	and
+	req.path:match("^/%a+/" .. utils.uuid_pattern .. "/?$")
+    and
+    string.match( req.headers["accept"], "json" )
+    then
+    events["request_document_json"]:trigger(req)
 end

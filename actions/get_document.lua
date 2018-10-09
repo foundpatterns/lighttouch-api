@@ -1,4 +1,4 @@
-event: ["reqProcess_document_json"]
+event: ["request_document_json"]
 priority: 1
 
 local helpers = require "helpers"
