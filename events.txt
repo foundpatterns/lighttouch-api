@@ -1,5 +1,3 @@
-reqProcess
-reqProcess2
-reqProcess_document_json
-reqProcess_post_document
-reqProcess_document_html
+request_document_json
+request_post_document
+request_nonexistent_document
