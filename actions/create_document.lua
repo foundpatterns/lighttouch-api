@@ -12,7 +12,7 @@ local params = {
 }
 
 local yaml_string = yaml.dump(params)
-local document_text = yaml_string .. "\n\n" .. req.body.text
+local document_text = yaml_string .. "\n...\n" .. req.body.text
 local document_params = helpers.split_document(document_text, post_uuid)
 
 file:write(document_text)
