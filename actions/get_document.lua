@@ -7,12 +7,15 @@ local template_params
 local document = fs.read_file("content/" .. id)
 
 log.debug("file path = " .. "content/" .. id)
-log.debug("file content = " .. document)
 
 --document = fs.read_file("templates/index.html")
 
-if not document then events["request_nonexistent_document"]:trigger(req)
+if not document then
+  events["request_nonexistent_document"]:trigger(req)
+  return
 end
+
+log.debug("file content = " .. document)
 
 local helpers = require "helpers"
 local template_params = helpers.split_document(document, id)
