@@ -2,7 +2,7 @@ event: ["request_document_json"]
 priority: 1
 
 -- GET /[type]/[uuid]
-local type, id = req.path:match("/(%a*)/(.*)")
+local type, id = req.path_segments[1], req.path_segments[2]
 local template_params
 local document = fs.read_file("content/" .. id)
 
@@ -14,7 +14,8 @@ log.debug("file content = " .. document)
 if not document then events["request_nonexistent_document"]:trigger(req)
 end
 
-template_params = helpers.split_document(document, id)
+local helpers = require "helpers"
+local template_params = helpers.split_document(document, id)
 
 log.debug(render("document.json", { document = template_params }))
 

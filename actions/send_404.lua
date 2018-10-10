@@ -1,3 +1,6 @@
+event: ["request_nonexistent_document"]
+priority: 1
+
 log.debug("")
 return {
     headers = {
