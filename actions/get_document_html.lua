@@ -5,7 +5,7 @@ local helpers = require "helpers"
 local fs = require "fs"
 
 -- GET /[type]/[uuid]
-local type, id = req.path:match("/(%a*)/(.*)")
+local type, id = request.path:match("/(%a*)/(.*)")
 local template_params
 local file_content = fs.read_file("content/" .. id)
 print ("[DEBUG] file path = " .. "content/" .. id)

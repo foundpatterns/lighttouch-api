@@ -7,12 +7,12 @@ local helpers = require("helpers")
 local post_uuid = uuid.v4()
 local file = io.open("content/" .. post_uuid, "w")
 local params = {
-    title = req.body.title,
-    type = req.body.type,
+    title = request.body.title,
+    type = request.body.type,
 }
 
 local yaml_string = yaml.dump(params)
-local document_text = yaml_string .. "\n\n" .. req.body.text
+local document_text = yaml_string .. "\n\n" .. request.body_raw
 local document_params = helpers.split_document(document_text, post_uuid)
 
 file:write(document_text)
