@@ -1,4 +1,4 @@
-event: ["reqProcess_post_document"]
+event: ["requestProcess_post_document"]
 priority: 1
 
 local helpers = require("helpers")

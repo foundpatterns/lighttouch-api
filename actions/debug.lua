@@ -1,6 +1,6 @@
-event: ["reqProcess", "reqProcess2"]
+event: ["requestProcess", "requestProcess2"]
 priority: 1
 
 local debug = require "debug"
 
-debug.print_request_info(req)
+debug.print_request_info(request)

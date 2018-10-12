@@ -1,4 +1,4 @@
-event: ["reqProcess"]
+event: ["requestProcess"]
 priority: 1
 
 local inspect = require "inspect"

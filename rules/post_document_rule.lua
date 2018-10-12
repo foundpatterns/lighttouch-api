@@ -1,3 +1,3 @@
 if request.method == "POST" and request.path == "/" then
-    events["reqProcess_post_document"]:trigger(req)
+    events["requestProcess_post_document"]:trigger(request)
 end
