@@ -1,7 +1,8 @@
+priority: 1
 if
-	req.method == "POST"
-	and
-	req.path == "/"
-	then
-    events["request_post_document"]:trigger(req)
+  request.method == "POST"
+  and
+  request.path == "/"
+  then
+    events["request_post_document"]:trigger(request)
 end
