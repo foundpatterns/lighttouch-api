@@ -1,4 +1,4 @@
-event: ["requestProcess", "requestProcess2"]
+event: ["request_process", "requestProcess2"]
 priority: 1
 
 local debug = require "debug"

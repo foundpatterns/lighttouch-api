@@ -1,3 +1,4 @@
+priority: 2
 local utils = require "utils"
 
 if request.method == "GET" and request.path:match("^/%a+/" .. utils.uuid_pattern .. "/?$") then
