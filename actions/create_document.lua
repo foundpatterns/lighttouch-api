@@ -1,5 +1,5 @@
 event: ["request_post_document"]
-priority: 1
+weight: 1
 
 local helpers = require("helpers")
 

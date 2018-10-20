@@ -1,4 +1,4 @@
-priority: 1
+weight: 1
 if
   request.method == "POST"
   and
