@@ -1,4 +1,6 @@
 weight: 2
+parameters: ["request", "events"]
+
 if request.method == "GET"
 and #request.path_segments == 2
 and request.path_segments[1]:match("%a+") -- TODO: make it a known type, not just any word

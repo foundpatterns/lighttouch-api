@@ -1,4 +1,6 @@
 weight: 1
+parameters: ["request", "events"]
+
 if
   request.method == "POST"
   and
