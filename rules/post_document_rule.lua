@@ -2,9 +2,9 @@ weight: 1
 parameters: ["request", "events"]
 
 if
-  request.method == "POST"
+  arguments["request"].method == "POST"
   and
-  request.path == "/"
+  arguments["request"].path == "/"
   then
-    events["request_post_document"]:trigger(request)
+    arguments["events"]["request_post_document"]:trigger(arguments["request"])
 end
