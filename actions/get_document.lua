@@ -17,14 +17,26 @@ end
 
 log.debug("file content = " .. document)
 
-local helpers = require "helpers"
-local template_params = helpers.split_document(document, id)
+local header, body = content.split_header(document)
 
-log.debug(render("document.json", { document = template_params }))
+local html_body = markdown_to_html(body, {safe = true})
+
+local template_params = {
+  uuid = id,
+  type = header.type,
+  title = header.title,
+  body = body,
+  created = header.created or "",
+  updated = header.updated or "",
+}
+
+local json = render("document.json", { document = template_params })
+
+log.debug(json)
 
 return {
     headers = {
         ["content-type"] = "application/json",
     },
-    body = render("document.json", { document = template_params })
+    body = json
 }
