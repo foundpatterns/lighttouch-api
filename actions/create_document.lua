@@ -1,16 +1,13 @@
 event: ["request_post_document"]
 priority: 1
 
-local content = require("content")
-
 -- POST /
-local post_uuid = uuid.v4()
-local file_uuid = uuid.v4()
-
+local document_uuid = uuid.v4()
+local incoming_request_uuid = uuid.v4()
 local params = {
     type = request.body.type,
-    uuid = post_uuid,
-    attributes = {
+    uuid = incoming_request_uuid,
+    fields = {
         title = request.body.title,
         body = request.body.body,
         created = request.body.created or "",
@@ -18,12 +15,12 @@ local params = {
     }
 }
 
-content.write_file (post_uuid, file_uuid, params, request.body.text)
+content.write_file (request.profile_uuid, document_uuid, params, request.body.text)
 
 return {
     headers = {
         ["content-type"] = "application/json",
-        ["X-Request-ID"] = post_uuid 
+        ["X-Request-ID"] = incoming_request_uuid 
     },
-    body = json.dump(params)
+    body = json.decode(params)
 }
