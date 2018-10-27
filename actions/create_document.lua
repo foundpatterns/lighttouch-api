@@ -22,5 +22,5 @@ return {
         ["content-type"] = "application/json",
         ["X-Request-ID"] = incoming_request_uuid 
     },
-    body = json.decode(params)
+    body = json.from_table(params)
 }
