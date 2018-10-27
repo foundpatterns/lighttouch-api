@@ -2,3 +2,4 @@ request_process
 request_document_json
 request_post_document
 request_nonexistent_document
+validate_documents
