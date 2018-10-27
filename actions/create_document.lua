@@ -1,27 +1,26 @@
 event: ["request_post_document"]
 priority: 1
 
-local helpers = require("helpers")
-
 -- POST /
-local post_uuid = uuid.v4()
-local file = io.open("content/" .. post_uuid, "w")
+local document_uuid = uuid.v4()
+local incoming_request_uuid = uuid.v4()
 local params = {
-    title = request.body.title,
     type = request.body.type,
+    uuid = incoming_request_uuid,
+    fields = {
+        title = request.body.title,
+        body = request.body.body,
+        created = request.body.created or "",
+        updated = request.body.updated or "",
+    }
 }
 
-local yaml_string = yaml.dump(params)
-local document_text = yaml_string .. "\n...\n" .. request.body.text
-local document_params = helpers.split_document(document_text, post_uuid)
-
-file:write(document_text)
-file:close()
+content.write_file (request.profile_uuid, document_uuid, params, request.body.text)
 
 return {
     headers = {
         ["content-type"] = "application/json",
-        ["X-Request-ID"] = post_uuid 
+        ["X-Request-ID"] = incoming_request_uuid 
     },
-    body = render("document.json", { document = document_params }),
+    body = json.from_table(params)
 }
