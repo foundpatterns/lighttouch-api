@@ -1,5 +1,6 @@
 event: ["request_document_json"]
 priority: 1
+parameters: ["request"]
 
 -- GET /[type]/[uuid]
 local type, id = request.path_segments[1], request.path_segments[2]

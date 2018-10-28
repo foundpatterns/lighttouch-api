@@ -1,5 +1,6 @@
 event: ["request_nonexistent_document"]
 priority: 1
+parameters: ["request"]
 
 log.debug("my 404")
 return {
