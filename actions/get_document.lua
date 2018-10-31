@@ -2,41 +2,28 @@ event: ["request_document_json"]
 priority: 1
 
 -- GET /[type]/[uuid]
-local type, id = request.path_segments[1], request.path_segments[2]
-local template_params
-local document = fs.read_file("content/" .. id)
+local model_name, id = request.path_segments[1], request.path_segments[2]
 
-log.debug("file path = " .. "content/" .. id)
-
---document = fs.read_file("templates/index.html")
-
-if not document then
-  events["request_nonexistent_document"]:trigger(request)
-  return
+local header, body = content.read_document(id)
+if not header then
+  return {
+    headers = { ["content-type"] = "application/json" },
+    body = json.from_table({msg="Document not found"})
+  }
 end
 
-log.debug("file content = " .. document)
+if header.type ~= model_name then
+  return {
+    headers = { ["content-type"] = "application/json" },
+    body = json.from_table({msg="Document is not of model " .. model_name})
+  }
+end
 
-local header, body = content.split_header(document)
-
-local html_body = markdown_to_html(body, {safe = true})
-
-local template_params = {
-  uuid = id,
-  type = header.type,
-  title = header.title,
-  body = body,
-  created = header.created or "",
-  updated = header.updated or "",
-}
-
-local json = render("document.json", { document = template_params })
-
-log.debug(json)
 
 return {
-    headers = {
-        ["content-type"] = "application/json",
-    },
-    body = json
+  headers = { ["content-type"] = "application/json" },
+  body = json.from_table({
+    fields = header,
+    body = body
+  })
 }
