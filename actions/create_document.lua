@@ -1,5 +1,6 @@
 event: ["request_post_document"]
 priority: 1
+input_parameters: ["request"]
 
 -- POST /
 local document_uuid = uuid.v4()
