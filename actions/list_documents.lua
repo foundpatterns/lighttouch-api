@@ -12,11 +12,9 @@ content.walk_documents(nil, function (file_uuid, header, body)
   end
 end)
 
-local body = json.from_table({documents=uuids})
-
 return {
   headers = {
     ["content-type"] = "application/json",
   },
-  body = body
+  body = json.from_table({documents=uuids})
 }
