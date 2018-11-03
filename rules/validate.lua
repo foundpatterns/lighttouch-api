@@ -1,6 +1,5 @@
 priority: 1
+input_parameter: "request"
+events_table: ["validate_documents"]
 
-if request.path_segments[1] == "validate_documents"
-then
-    events["validate_documents"]:trigger(request)
-end
+request.path_segments[1] == "validate_documents"
