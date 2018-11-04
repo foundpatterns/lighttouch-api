@@ -5,18 +5,19 @@ input_parameters: ["request"]
 -- POST /
 local document_uuid = uuid.v4()
 local incoming_request_uuid = uuid.v4()
-local params = {
-    type = request.body.type,
-    uuid = incoming_request_uuid,
-    fields = {
-        title = request.body.title,
-        body = request.body.body,
-        created = request.body.created or "",
-        updated = request.body.updated or "",
-    }
-}
 
-content.write_file (request.profile_uuid, document_uuid, params, request.body.text)
+local fields = {
+    type = request.body.model,
+    uuid = incoming_request_uuid,
+}
+for k, v in pairs(request.body) do
+    local field_name = k:match("^fields%.(.+)$")
+    if field_name then
+        fields[field_name] = v
+    end
+end
+
+content.write_file (request.profile_uuid or "home", document_uuid, fields, request.body.body)
 
 return {
     headers = {
