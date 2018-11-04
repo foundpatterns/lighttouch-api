@@ -4,11 +4,10 @@ input_parameters: ["request"]
 
 -- POST /
 local document_uuid = uuid.v4()
-local incoming_request_uuid = uuid.v4()
 
 local fields = {
     type = request.body.model,
-    uuid = incoming_request_uuid,
+    request_uuid = request.uuid,
 }
 for k, v in pairs(request.body) do
     local field_name = k:match("^fields%.(.+)$")
@@ -22,7 +21,7 @@ content.write_file (request.profile_uuid or "home", document_uuid, fields, reque
 return {
     headers = {
         ["content-type"] = "application/json",
-        ["X-Request-ID"] = incoming_request_uuid 
+        ["X-Request-ID"] = request.uuid 
     },
     body = json.from_table(params)
 }
