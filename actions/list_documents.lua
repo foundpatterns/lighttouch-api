@@ -8,7 +8,7 @@ local model_name = request.path_segments[1]
 local uuids = {}
 
 content.walk_documents(nil, function (file_uuid, header, body)
-  if header.type == model_name then
+  if header.model == model_name then
 
     -- Filter the documents using the query params
     for k, v in pairs(request.query) do

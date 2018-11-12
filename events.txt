@@ -4,3 +4,4 @@ request_post_document
 request_nonexistent_document
 validate_documents
 list_documents_json
+list_subdocuments_json
