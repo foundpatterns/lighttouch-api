@@ -6,7 +6,7 @@ input_parameters: ["request"]
 local document_uuid = uuid.v4()
 
 local fields = {
-    type = request.body.model,
+    model = request.body.model,
     request_uuid = request.uuid,
 }
 for k, v in pairs(request.body) do
