@@ -9,6 +9,7 @@ local fields = {
     model = request.body.model,
     request_uuid = request.uuid,
 }
+
 for k, v in pairs(request.body) do
     local field_name = k:match("^fields%.(.+)$")
     if field_name then
@@ -16,7 +17,16 @@ for k, v in pairs(request.body) do
     end
 end
 
-content.write_file (request.profile_uuid or "home", document_uuid, fields, request.body.body)
+
+local id, store = request.body.id
+if id then
+    local _, _, _store = content.read_document(id)
+    store = _store
+else
+    store = request.profile_uuid or content.home
+end
+
+content.write_file (store, id or document_uuid, fields, request.body.body)
 
 return {
     headers = {
