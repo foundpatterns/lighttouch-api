@@ -1,6 +1,6 @@
-event: ["list_documents_json"]
-priority: 1
-input_parameters: ["request"]
+event = ["list_documents_json"]
+priority = 1
+input_parameters = ["request"]
 
 -- GET /[type]/[uuid]
 local model_name = request.path_segments[1]

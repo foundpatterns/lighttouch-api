@@ -1,6 +1,6 @@
-event: ["list_subdocuments_json"]
-priority: 1
-input_parameters: ["request"]
+event = ["list_subdocuments_json"]
+priority = 1
+input_parameters = ["request"]
 
 
 -- GET /[type]

@@ -1,6 +1,6 @@
-priority: 3
-input_parameter: "request"
-events_table: ["list_subdocuments_json"]
+priority = 3
+input_parameter = "request"
+events_table = ["list_subdocuments_json"]
 
 request.method == "GET"
 and #request.path_segments == 3

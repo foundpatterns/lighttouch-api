@@ -1,6 +1,6 @@
-event: ["validate_documents"]
-priority: 1
-input_parameters: ["request"]
+event = ["validate_documents"]
+priority = 1
+input_parameters = ["request"]
 
 local err = content.walk_documents("home", function (uuid, header, body)
 
