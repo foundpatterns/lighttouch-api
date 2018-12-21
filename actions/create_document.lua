@@ -1,6 +1,6 @@
-event: ["request_post_document"]
-priority: 1
-input_parameters: ["request"]
+event = ["request_post_document"]
+priority = 1
+input_parameters = ["request"]
 
 -- POST /
 local document_uuid = uuid.v4()
@@ -31,7 +31,7 @@ content.write_file (store, id or document_uuid, fields, request.body.body)
 return {
     headers = {
         ["content-type"] = "application/json",
-        ["X-Request-ID"] = request.uuid 
+        ["X-Request-ID"] = request.uuid
     },
     body = json.from_table(params)
 }

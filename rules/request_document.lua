@@ -1,6 +1,6 @@
-priority: 2
-input_parameter: "request"
-events_table: ["request_document_json"]
+priority = 2
+input_parameter = "request"
+events_table = ["request_document_json"]
 
 request.method == "GET"
 and #request.path_segments == 2

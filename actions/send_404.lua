@@ -1,6 +1,6 @@
-event: ["request_nonexistent_document"]
-priority: 1
-input_parameters: ["request"]
+event = ["request_nonexistent_document"]
+priority = 1
+input_parameters = ["request"]
 
 log.debug("my 404")
 return {
