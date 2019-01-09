@@ -10,7 +10,7 @@ local model_name = request.path_segments[3]
 
 local uuids = {}
 
-content.walk_documents(nil, function (doc_id, fields, body)
+contentdb.walk_documents(nil, function (doc_id, fields, body)
   if fields.model ~= model_name then return end
   if fields[base_model] == document_uuid then
     table.insert(uuids, doc_id)

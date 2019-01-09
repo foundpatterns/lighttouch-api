@@ -20,13 +20,13 @@ end
 
 local id, store = request.body.id
 if id then
-    local _, _, _store = content.read_document(id)
+    local _, _, _store = contentdb.read_document(id)
     store = _store
 else
-    store = request.profile_uuid or content.home
+    store = request.profile_uuid or contentdb.home
 end
 
-content.write_file (store, id or document_uuid, fields, request.body.body)
+contentdb.write_file (store, id or document_uuid, fields, request.body.body)
 
 return {
     headers = {

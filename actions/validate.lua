@@ -2,10 +2,10 @@ event = ["validate_documents"]
 priority = 1
 input_parameters = ["request"]
 
-local err = content.walk_documents("home", function (uuid, header, body)
+local err = contentdb.walk_documents("home", function (uuid, header, body)
 
   header.model = header.type
-  local result, err = content.validate_document(header)
+  local result, err = contentdb.validate_document(header)
   if not result then
     return "Validation failed in document " .. uuid .. ": " .. err
   end
