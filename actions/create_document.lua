@@ -28,10 +28,12 @@ end
 
 contentdb.write_file (store, id or document_uuid, fields, request.body.body)
 
+local redirect = "<!DOCTYPE html><html><head><meta http-equiv=\"refresh\" content=\"0; URL='/".. fields['model'] .."/'\" /></head></html>"
+
 return {
     headers = {
-        ["content-type"] = "application/json",
+        ["content-type"] = "text/html",
         ["X-Request-ID"] = request.uuid
     },
-    body = json.from_table(params)
+    body = redirect
 }

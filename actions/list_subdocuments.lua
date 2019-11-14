@@ -18,12 +18,11 @@ contentdb.walk_documents(nil, function (doc_id, fields, body)
 end)
 
 
-
 if #uuids == 0 then uuids = nil end
 
 return {
   headers = {
-    ["content-type"] = "text/html",
+    ["content-type"] = "application/json",
   },
   body = json.from_table({
     base_model = base_model,
